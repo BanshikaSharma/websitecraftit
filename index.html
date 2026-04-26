@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Craft It - Tech Student Platform | Advertisement</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -548,8 +548,6 @@
             color: var(--gray-500);
         }
 
-        /* Removed price-tag styles - prices removed */
-
         /* Testimonials */
         .testimonials {
             margin-top: 4rem;
@@ -873,19 +871,14 @@
     <!-- Robot Animation -->
     <div class="robot-animation" onclick="toggleRobotChat()">
         <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Robot Head -->
             <rect x="20" y="30" width="60" height="50" rx="10" fill="url(#robotGrad)" stroke="#00d9ff" stroke-width="2"/>
-            <!-- Robot Eyes -->
             <circle cx="40" cy="50" r="8" fill="#ffffff" class="robot-eye"/>
             <circle cx="60" cy="50" r="8" fill="#ffffff" class="robot-eye"/>
             <circle cx="40" cy="50" r="4" fill="#00d9ff"/>
             <circle cx="60" cy="50" r="4" fill="#00d9ff"/>
-            <!-- Robot Antenna -->
             <line x1="50" y1="30" x2="50" y2="15" stroke="#00d9ff" stroke-width="3"/>
             <circle cx="50" cy="12" r="5" fill="#ff2e63"/>
-            <!-- Robot Mouth -->
             <rect x="35" y="65" width="30" height="5" rx="2" fill="#00d9ff"/>
-            <!-- Robot Ears -->
             <rect x="10" y="45" width="10" height="15" rx="3" fill="#00d9ff"/>
             <rect x="80" y="45" width="10" height="15" rx="3" fill="#00d9ff"/>
             <defs>
@@ -1004,7 +997,7 @@
                         </div>
                     </div>
 
-                    <!-- CTA Button -->
+                    <!-- CTA Button - now points directly to the app URL -->
                     <button class="cta-button" onclick="openMainApp()">
                         <i class="fas fa-rocket"></i>
                         Launch Craft It App
@@ -1012,7 +1005,7 @@
                     </button>
                 </div>
 
-                <!-- Right Content - QR Code -->
+                <!-- Right Content - QR Code Section -->
                 <div class="qr-section">
                     <h2 class="qr-title">Scan to Open</h2>
                     <p class="qr-subtitle">Open Craft It app instantly on your phone</p>
@@ -1293,28 +1286,25 @@
     </style>
 
     <script>
-        // Creator Contact Details - UPDATED
+        // Updated: Target URL for the Craft It application
+        const TARGET_APP_URL = 'https://banshikasharma.github.io/craftit/';
+        
+        // Creator contact details (unchanged)
         const CREATOR_PHONE = '6006573367';
         const CREATOR_EMAIL = 'craftitsite@gmail.com';
         
-        // Main App URL (this would be the actual URL where your main app is hosted)
-        const MAIN_APP_URL = window.location.href; // In real scenario, replace with actual app URL
-
-        // Generate QR Code on page load
+        // Generate QR Code pointing to the correct app URL
         document.addEventListener('DOMContentLoaded', function() {
             generateQRCode();
         });
 
-        // Generate QR Code for main app
+        // Generate QR code that redirects to the actual craftit app URL
         function generateQRCode() {
             const qrCanvas = document.getElementById('qrCanvas');
-            
-            // Clear previous QR
             qrCanvas.innerHTML = '';
             
-            // Generate QR code that points to this same page (main app)
-            // In real scenario, replace with actual app URL
-            QRCode.toCanvas(MAIN_APP_URL, {
+            // Create QR code that points to the exact GitHub Pages app
+            QRCode.toCanvas(TARGET_APP_URL, {
                 width: 180,
                 margin: 2,
                 color: {
@@ -1331,14 +1321,10 @@
             });
         }
 
-        // Open main app
+        // Open main app (now navigates to the actual craftit application)
         function openMainApp() {
-            // In a real scenario, this would navigate to your main app
-            // For demo, we'll show a popup
-            showFeaturePopup('launch');
-            
-            // Uncomment below to actually navigate
-            // window.location.href = MAIN_APP_URL;
+            // Direct navigation to the actual Craft It application URL
+            window.location.href = TARGET_APP_URL;
         }
 
         // Toggle robot chat
@@ -1347,7 +1333,7 @@
             chat.classList.toggle('active');
         }
 
-        // Show feature popup
+        // Show feature popup (preserved UI but without altering layout)
         function showFeaturePopup(feature) {
             const popup = document.getElementById('featurePopup');
             const icon = document.getElementById('featurePopupIcon');
@@ -1411,7 +1397,7 @@
         function shareAd() {
             if (navigator.share) {
                 navigator.share({
-                    title: 'Craft It - Tech Student Project Platform',
+                    title: 'Craft It - Student Project Platform',
                     text: 'Get professional websites, dashboards, presentations, essays, and content with 20% student discount! Scan QR code to open.',
                     url: window.location.href
                 }).then(() => {
